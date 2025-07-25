@@ -1,10 +1,7 @@
-package Elements;
-import static com.codeborne.selenide.Condition.*;
+package Pages.Elements;
 import static com.codeborne.selenide.Selenide.*;
-import com.codeborne.selenide.*;
 
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 
 public class E_TextBox {
     //Input fields

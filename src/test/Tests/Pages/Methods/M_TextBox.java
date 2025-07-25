@@ -1,17 +1,17 @@
-package Methods;
-import Elements.E_TextBox;
+package Pages.Methods;
+import Pages.Elements.E_TextBox;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.*;
-import com.codeborne.selenide.*;
-import org.openqa.selenium.By;
 
 import java.time.Duration;
 
 public class M_TextBox extends E_TextBox {
+    //Service
     public void openTextBoxPage() {
         open("/text-box");
     }
+
     //inputUserName
     public void inputUserName_Exists() {
         inputUserName.should(exist).shouldBe(visible);
@@ -74,6 +74,10 @@ public class M_TextBox extends E_TextBox {
 
     public void outputEmail_Compare(String str) {
         outputEmail.shouldHave(exactText("Email:" + str), Duration.ofSeconds(4));;
+    }
+
+    public void inputEmail_PlaceholderVerification(String str) {
+        inputEmail.shouldHave(attribute("placeholder", str));
     }
 
     //outputCurrentAddress

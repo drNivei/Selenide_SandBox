@@ -1,13 +1,8 @@
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
-import static org.junit.jupiter.api.Assertions.*;
 import com.codeborne.selenide.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import java.time.Duration;
 
-import Methods.M_TextBox;
-import org.openqa.selenium.By;
+import Pages.Methods.M_TextBox;
 
 public class Tests {
 
@@ -26,6 +21,7 @@ public class Tests {
 
         String name = "My Name";
         String email = "email@who.com";
+        String emailPlaceholder = "name@example.com";
         String currentAdress = "Current Address Country, City, Street, house, flat";
         String permanentAdress = "Permanent Address Country, City, Street, house, flat";
 
@@ -35,6 +31,8 @@ public class Tests {
         m_textBox.inputEmail_Exists();
         m_textBox.inputCurrentAddress_Exists();
         m_textBox.inputPermanentAddress_Exists();
+
+        m_textBox.inputEmail_PlaceholderVerification(emailPlaceholder);
 
         m_textBox.inputUserName_Set(name);
         m_textBox.inputEmail_Set(email);
