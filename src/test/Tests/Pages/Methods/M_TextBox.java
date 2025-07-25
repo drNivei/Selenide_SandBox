@@ -1,5 +1,7 @@
 package Pages.Methods;
 import Pages.Elements.E_TextBox;
+import io.qameta.allure.Step;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,6 +15,7 @@ public class M_TextBox extends E_TextBox {
     }
 
     //inputUserName
+
     public void inputUserName_Exists() {
         inputUserName.should(exist).shouldBe(visible);
     }
@@ -22,6 +25,7 @@ public class M_TextBox extends E_TextBox {
     }
 
     //inputEmail
+    @Step("Проверяем, что поле Емаил существует")
     public void inputEmail_Exists() {
         inputEmail.should(exist).shouldBe(visible);
     }
@@ -34,6 +38,8 @@ public class M_TextBox extends E_TextBox {
         if(!inputEmail.getAttribute("class").contains("field-error")){
             fail("Field is not highlighted red because of Error input");
         };
+        //String borderColor = inputEmail.getCssValue(".field-error.border");
+        //System.out.println(borderColor);
     }
 
     //inputCurrentAddress

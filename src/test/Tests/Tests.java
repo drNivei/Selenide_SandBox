@@ -1,17 +1,28 @@
+//Autotests
 import com.codeborne.selenide.*;
+import com.codeborne.selenide.junit5.TextReportExtension;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.*;
+import io.qameta.allure.selenide.AllureSelenide;
+//Support
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
+import org.junit.jupiter.api.extension.ExtendWith;
+//Custom methods
 import Pages.Methods.M_TextBox;
+
 
 public class Tests {
 
    @BeforeAll
-    public static void setUp() {
+    public static void setupSelenide() {
       Configuration.baseUrl = "https://demoqa.com";
       Configuration.pageLoadTimeout = 100000;
       Configuration.browser = "firefox";
       Configuration.pageLoadStrategy =  "eager";
+      SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+               .screenshots(false)
+               .savePageSource(true));
     }
 
     @Test
@@ -57,9 +68,7 @@ public class Tests {
     public void testTextBox_EmailInputError(){
 
         M_TextBox m_textBox = new M_TextBox();
-
         String email = "123";
-
         m_textBox.openTextBoxPage();
         m_textBox.inputEmail_Exists();
         m_textBox.inputEmail_Set(email);

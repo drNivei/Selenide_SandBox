@@ -25,8 +25,33 @@
             <version>7.2.3</version>
         </dependency>
 
-
+        <!-- Allure для отчетов -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-selenide</artifactId>
+            <version>2.25.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <version>2.25.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+
+    <build>
+    <plugins>
+    <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>2.15.2</version>
+        <configuration>
+            <reportVersion>2.25.0</reportVersion>
+        </configuration>
+    </plugin>
+    </plugins>
+    </build>
 
 
     <properties>
