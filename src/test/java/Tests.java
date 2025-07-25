@@ -46,7 +46,7 @@ public class Tests {
 
         //$("#submit").hover();
         $(By.id("submit")).pressEnter();
-        
+
         $("#output #name").should(exist).shouldBe(visible).shouldHave(exactText("Name:My Name"), Duration.ofSeconds(18));
         $("#output #email").should(exist).shouldBe(visible).shouldHave(exactText("Email:email@who.com"), Duration.ofSeconds(18));
         $("#output #currentAddress").shouldHave(exactText("Current Address :Current Address Country, City, Street, house, flat"), Duration.ofSeconds(18));
