@@ -21,7 +21,7 @@ public class Tests {
       Configuration.browser = "firefox";
       Configuration.pageLoadStrategy =  "eager";
       SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
-               .screenshots(false)
+               .screenshots(true)
                .savePageSource(true));
     }
 
