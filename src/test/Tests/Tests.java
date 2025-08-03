@@ -1,13 +1,11 @@
-//Autotests
+package Tests;//Autotests
 import com.codeborne.selenide.*;
-import com.codeborne.selenide.junit5.TextReportExtension;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.*;
+import io.qameta.allure.Allure;
 import io.qameta.allure.selenide.AllureSelenide;
 //Support
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 //Custom methods
 import Pages.Methods.M_TextBox;
 
@@ -31,10 +29,13 @@ public class Tests {
         M_TextBox m_textBox = new M_TextBox();
 
         String name = "My Name";
+
         String email = "email@who.com";
         String emailPlaceholder = "name@example.com";
-        String currentAdress = "Current Address Country, City, Street, house, flat";
-        String permanentAdress = "Permanent Address Country, City, Street, house, flat";
+
+        String currentAddress = "Current Address Country, City, Street, house, flat";
+
+        String permanentAddress = "Permanent Address Country, City, Street, house, flat";
 
         m_textBox.openTextBoxPage();
 
@@ -47,8 +48,8 @@ public class Tests {
 
         m_textBox.inputUserName_Set(name);
         m_textBox.inputEmail_Set(email);
-        m_textBox.inputCurrentAddress_Set(currentAdress);
-        m_textBox.inputPermanentAddress_Set(permanentAdress);
+        m_textBox.inputCurrentAddress_Set(currentAddress);
+        m_textBox.inputPermanentAddress_Set(permanentAddress);
 
         m_textBox.buttonSubmit_Click();
 
@@ -59,8 +60,8 @@ public class Tests {
 
         m_textBox.outputName_Compare(name);
         m_textBox.outputEmail_Compare(email);
-        m_textBox.outputCurrentAddress_Compare(currentAdress);
-        m_textBox.outputPermanentAddress_Compare(permanentAdress);
+        m_textBox.outputCurrentAddress_Compare(currentAddress);
+        m_textBox.outputPermanentAddress_Compare(permanentAddress);
 
     }
 
@@ -68,12 +69,17 @@ public class Tests {
     public void testTextBox_EmailInputError(){
 
         M_TextBox m_textBox = new M_TextBox();
+
         String email = "123";
+        Allure.step("Open ");
         m_textBox.openTextBoxPage();
+        Allure.step("Verify that field 'Email' exists");
         m_textBox.inputEmail_Exists();
+        Allure.step("Set value '" + email + "' to 'Email' field");
         m_textBox.inputEmail_Set(email);
+        Allure.step("Click SUBMIT button");
         m_textBox.buttonSubmit_Click();
+        Allure.step("Verify that field 'Email' border is highlighted RED");
         m_textBox.inputEmail_InputErrorHighlightCheck();
     }
-
 }
