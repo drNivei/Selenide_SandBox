@@ -2,6 +2,7 @@ package Tests;//Autotests
 import com.codeborne.selenide.*;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Allure;
+import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
 //Support
 import org.junit.jupiter.api.BeforeAll;
@@ -66,6 +67,9 @@ public class Tests {
     }
 
     @Test
+    @Epic("User Management") // This test belongs to the "User Management" epic
+    @Feature("Login Functionality")
+    @Story("Successful Login with Valid Credentials")
     public void testTextBox_EmailInputError(){
 
         M_TextBox m_textBox = new M_TextBox();
