@@ -7,6 +7,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.util.Collections;
+import java.util.List;
+
 public class HibernateMain {
     private static final SessionFactory sessionFactory = buildSessionFactory();
     private static SessionFactory buildSessionFactory(){
@@ -46,9 +49,24 @@ public class HibernateMain {
 
     }
 
+    public void getAllEmployees() {
+        Session session = getSessionFactory().openSession();
+        session.beginTransaction();
+
+        List<Department> department = Collections.singletonList((Department) session.createQuery("SELECT * FROM Department", Department.class));
+        for(int i=0; i<department.size()-1; i++){
+            List<Employee> employees = department.get(i).getEmployees();
+            System.out.println(employees);
+        }
+
+        session.close();
+
+    }
+
     public static void main(String[] args) {
         HibernateMain hibernateMain = new HibernateMain();
        // hibernateMain.createUser();
         hibernateMain.createDepartmentWithUser();
+        hibernateMain.getAllEmployees();
     }
 }

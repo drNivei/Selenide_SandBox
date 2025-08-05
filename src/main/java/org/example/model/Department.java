@@ -12,7 +12,7 @@ public class Department {
     long id;
     String name;
     String description;
-    @OneToMany (mappedBy = "department")
+    @OneToMany (mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Employee> employees = new ArrayList<>();
 
     public long getId() {
