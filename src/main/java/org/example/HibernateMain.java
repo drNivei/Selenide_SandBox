@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.model.Department;
+import org.example.model.Employee;
 import org.example.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -26,8 +28,27 @@ public class HibernateMain {
         session.close();
     }
 
+    public void createDepartmentWithUser () {
+        Session session = getSessionFactory().openSession();
+        session.beginTransaction();
+
+        Department department = new Department();
+        department.setName("IT Department");
+        session.persist(department);
+
+        Employee employee = new Employee();
+        employee.setDepartment(department);
+        employee.setName("John");
+        session.persist(employee);
+
+        session.getTransaction().commit();
+        session.close();
+
+    }
+
     public static void main(String[] args) {
         HibernateMain hibernateMain = new HibernateMain();
-        hibernateMain.createUser();
+       // hibernateMain.createUser();
+        hibernateMain.createDepartmentWithUser();
     }
 }

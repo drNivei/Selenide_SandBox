@@ -8,7 +8,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 //Custom methods
-import Pages.Methods.M_TextBox;
+import Tests.Pages.Methods.M_TextBox;
 
 
 public class Tests {

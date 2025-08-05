@@ -1,4 +1,4 @@
-package Pages.Methods;
+package Tests.Pages.Methods;
 import Pages.Elements.E_TextBox;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;

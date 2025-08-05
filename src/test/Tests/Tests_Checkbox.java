@@ -10,7 +10,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 //Custom methods
-import Pages.Methods.M_TextBox;
+import Tests.Pages.Methods.M_TextBox;
 
 import javax.swing.text.Element;
 
