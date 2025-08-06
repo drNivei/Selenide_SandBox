@@ -15,6 +15,8 @@ public class Department {
     @OneToMany (mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Employee> employees = new ArrayList<>();
 
+
+
     public long getId() {
         return id;
     }
@@ -29,6 +31,13 @@ public class Department {
 
     public List<Employee> getEmployees() {
         return employees;
+    }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "id=" + id +
+                '}';
     }
 
     public void setId(long id) {

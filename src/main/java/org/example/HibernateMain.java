@@ -62,12 +62,20 @@ public class HibernateMain {
     }
 
     public static void main(String[] args) {
-        /*HibernateMain hibernateMain = new HibernateMain();
-       hibernateMain.createUser();
-        hibernateMain.createDepartmentWithUser();
-        hibernateMain.getAllEmployees();*/
+        HibernateMain hibernateMain = new HibernateMain();
+       //hibernateMain.createUser();
+       //hibernateMain.createDepartmentWithUser();
+       // hibernateMain.getAllEmployees();
         StudentRepository studentRepository = new StudentRepository();
         Student student = new Student("Sasha","Alexeev", 34, "123@mail.ru");
+        Student student1 = new Student("Sasha1","Alexeev1", 34, "1231@mail1.ru");
+        student1.setId(1);
+        long id = 1;
         studentRepository.save(student, sessionFactory);
+        System.out.println("Student with ID = `1: " + studentRepository.findById(id, sessionFactory));
+        System.out.println("Students are: " + studentRepository.findAll(sessionFactory));
+        studentRepository.update(student1,sessionFactory);
+        studentRepository.delete(id,sessionFactory);
+
     }
 }

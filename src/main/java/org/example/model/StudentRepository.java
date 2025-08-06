@@ -3,6 +3,7 @@ package org.example.model;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.Collections;
 import java.util.List;
@@ -14,13 +15,14 @@ public class StudentRepository {
         session.beginTransaction();
         session.persist(student);
         session.getTransaction().commit();
+        System.out.println("Student "+student+" successfully added!");
         session.close();
     }
 
     public Student findById(Long id, SessionFactory sessionFactory) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        Student student = (Student) session.createQuery("SELECT * FROM Student WHERE id="+ id, Student.class);
+        Student student = session.get(Student.class, id);
         session.close();
         return student;
     }
@@ -28,9 +30,11 @@ public class StudentRepository {
     public List<Student> findAll(SessionFactory sessionFactory) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<Student> student = Collections.singletonList((Student) session.createQuery("SELECT * FROM Student", Student.class));
+        String hql = "FROM Student"; // Replace YourEntityClassName with the actual class name
+        Query<Student> query = session.createQuery(hql, Student.class);
+        List<Student> results = query.list();
         session.close();
-        return student;
+        return results;
     }
 
     public void update(Student student, SessionFactory sessionFactory) {
@@ -61,8 +65,8 @@ public class StudentRepository {
         session.beginTransaction();
         Student student = session.find(Student.class, id);
         if (student != null) {
-            System.out.println("Студет " + student + " удален!");
             session.remove(student);
+            System.out.println("Студет " + student + " удален!");
         }
         session.close();
     }

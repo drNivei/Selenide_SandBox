@@ -13,6 +13,14 @@ public class Employee {
     @JoinColumn (name = "department_id")
     private Department department = new Department();
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", department=" + department +
+                '}';
+    }
 
     public String getName() {
         return name;

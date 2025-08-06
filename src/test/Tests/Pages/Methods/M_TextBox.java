@@ -1,11 +1,9 @@
 package Pages.Methods;
 import Pages.Elements.E_TextBox;
-import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.Duration;
 
@@ -26,7 +24,6 @@ public class M_TextBox extends E_TextBox {
     }
 
     //inputEmail
-    @Step("Проверяем, что поле Емаил существует")
     public void inputEmail_Exists() {
         inputEmail.should(exist).shouldBe(visible);
     }
