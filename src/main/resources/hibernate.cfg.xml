@@ -31,5 +31,6 @@
         <mapping class="org.example.model.User"/>
         <mapping class="org.example.model.Department"/>
         <mapping class="org.example.model.Employeee"/>
+        <mapping class="org.example.model.Student"/>
     </session-factory>
 </hibernate-configuration>

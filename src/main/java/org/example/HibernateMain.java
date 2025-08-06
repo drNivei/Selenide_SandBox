@@ -1,8 +1,6 @@
 package org.example;
 
-import org.example.model.Department;
-import org.example.model.Employee;
-import org.example.model.User;
+import org.example.model.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -64,9 +62,12 @@ public class HibernateMain {
     }
 
     public static void main(String[] args) {
-        HibernateMain hibernateMain = new HibernateMain();
-       // hibernateMain.createUser();
+        /*HibernateMain hibernateMain = new HibernateMain();
+       hibernateMain.createUser();
         hibernateMain.createDepartmentWithUser();
-        hibernateMain.getAllEmployees();
+        hibernateMain.getAllEmployees();*/
+        StudentRepository studentRepository = new StudentRepository();
+        Student student = new Student("Sasha","Alexeev", 34, "123@mail.ru");
+        studentRepository.save(student, sessionFactory);
     }
 }

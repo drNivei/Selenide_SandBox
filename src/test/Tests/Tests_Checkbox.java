@@ -1,26 +1,18 @@
 package Tests;
 import com.codeborne.selenide.*;
-import com.codeborne.selenide.junit5.TextReportExtension;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
 //Support
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 //Custom methods
-import Tests.Pages.Methods.M_TextBox;
-
-import javax.swing.text.Element;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Tests_Checkbox {
