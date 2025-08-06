@@ -71,10 +71,19 @@ public class HibernateMain {
         Student student1 = new Student("Sasha1","Alexeev1", 34, "1231@mail1.ru");
         student1.setId(1);
         long id = 1;
+
         studentRepository.save(student, sessionFactory);
+        System.out.println();
+
         System.out.println("Student with ID = `1: " + studentRepository.findById(id, sessionFactory));
+        System.out.println();
+
         System.out.println("Students are: " + studentRepository.findAll(sessionFactory));
+        System.out.println();
+
         studentRepository.update(student1,sessionFactory);
+        System.out.println();
+
         studentRepository.delete(id,sessionFactory);
 
     }
