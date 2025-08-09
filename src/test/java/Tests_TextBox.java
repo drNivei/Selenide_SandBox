@@ -1,4 +1,4 @@
-package Tests;//Autotests
+package java;//Autotests
 import com.codeborne.selenide.*;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Allure;
@@ -8,7 +8,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 //Custom methods
-import Tests.Pages.Methods.Elements.M_TextBox;
+import java.Pages.Methods.Elements.M_TextBox;
 
 
 public class Tests_TextBox {

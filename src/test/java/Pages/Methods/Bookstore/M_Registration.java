@@ -1,5 +1,5 @@
-package Tests.Pages.Methods.Bookstore;
-import Tests.Pages.Elements.Bookstore.E_Registration;
+package java.Pages.Methods.Bookstore;
+import java.Pages.Elements.Bookstore.E_Registration;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;

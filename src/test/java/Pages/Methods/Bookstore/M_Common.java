@@ -1,6 +1,6 @@
-package Tests.Pages.Methods.Bookstore;
+package java.Pages.Methods.Bookstore;
 
-import Tests.Pages.Elements.Bookstore.E_Common;
+import java.Pages.Elements.Bookstore.E_Common;
 
 import static com.codeborne.selenide.Condition.disappear;
 

@@ -1,8 +1,7 @@
-package Tests.Pages.Elements.Bookstore;
+package java.Pages.Elements.Bookstore;
 
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 

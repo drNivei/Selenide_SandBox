@@ -1,6 +1,6 @@
-package Tests;
+package java;
 
-import Tests.Pages.Methods.Bookstore.*;
+import java.Pages.Methods.Bookstore.*;
 import com.codeborne.selenide.Configuration;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
