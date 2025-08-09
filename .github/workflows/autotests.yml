@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       selenium:
-        image: selenium/standalone-firefox:4.19.1-20240313
+        image: selenium/standalone-firefox
         ports:
           - 4444:4444
 
