@@ -44,6 +44,10 @@ jobs:
       if: always()
       run: |
         mvn allure:report
+        echo "Allure results:"
+        ls -la target/allure-results
+        echo "Allure report:"
+        ls -la target/site/allure-maven-plugin
     
     - name: Upload Allure Report
       uses: actions/upload-artifact@v4
