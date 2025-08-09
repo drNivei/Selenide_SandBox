@@ -29,10 +29,11 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2-
 
-    - name: Start Selenium Server
+    - name: Start Selenium (Windows Container)
+      if: runner.os == 'Windows'
       run: |
-        docker pull selenium/standalone-firefox:4.19.1-windowsservercore
-        docker run -d -p 4444:4444 selenium/standalone-firefox:4.19.1-windowsservercore
+          docker pull selenium/standalone-firefox:4.16.1-20240130
+          docker run -d -p 4444:4444 --name selenium-firefox selenium/standalone-firefox:4.16.1-20240130
         
     - name: Run Selenide tests
       run: mvn test -Dselenide.remote=$env:SELENIUM_URL -Dtest=Tests_TextBox
