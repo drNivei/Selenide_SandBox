@@ -29,21 +29,10 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2-
 
-    - name: Install Firefox
-      shell: powershell
+    - name: Start Selenium Server
       run: |
-        # Install Firefox
-        $firefoxVersion = "127.0"  # ESR version recommended for CI
-        Invoke-WebRequest "https://download.mozilla.org/?product=firefox-$firefoxVersion-ssl&os=win64&lang=en-US" -OutFile "firefox.exe"
-        Start-Process -Wait -FilePath ".\firefox.exe" -ArgumentList "/S"
-
-    - name: Setup GeckoDriver
-      shell: powershell
-      run: |
-        $geckoVersion = "0.34.0"
-        Invoke-WebRequest "https://github.com/mozilla/geckodriver/releases/download/v$geckoVersion/geckodriver-v$geckoVersion-win64.zip" -OutFile "geckodriver.zip"
-        Expand-Archive -Path "geckodriver.zip" -DestinationPath "$env:RUNNER_TOOL_CACHE\WebDriver"
-        Add-Content $env:GITHUB_PATH "$env:RUNNER_TOOL_CACHE\WebDriver"
+        docker pull selenium/standalone-firefox:4.19.1
+        docker run -d -p 4444:4444 --name selenium-firefox selenium/standalone-firefox:4.19.1
         
     - name: Run Selenide tests
       run: mvn test -Dselenide.remote=$env:SELENIUM_URL -Dtest=Tests_TextBox
