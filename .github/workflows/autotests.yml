@@ -8,7 +8,12 @@ on:
 
 jobs:
   test:
-    runs-on: self-hosted
+    runs-on: windows-latest
+    services:
+      selenium:
+        image: selenium/standalone-firefox
+        ports:
+          - 4444:4444
 
     steps:
     - name: Checkout code
