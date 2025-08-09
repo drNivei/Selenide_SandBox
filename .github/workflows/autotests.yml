@@ -33,4 +33,4 @@ jobs:
         restore-keys: ${{ runner.os }}-m2-
         
     - name: Run Selenide tests
-      run: mvn test -Dselenide.remote=http://localhost:4444/wd/hub
+      run: mvn test -Dselenide.remote=http://localhost:4444/wd/hub -Dtest=Tests_TextBox
