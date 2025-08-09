@@ -1,5 +1,3 @@
-package java;
-
 import com.codeborne.selenide.*;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Allure;
