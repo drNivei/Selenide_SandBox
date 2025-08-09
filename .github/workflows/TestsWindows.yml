@@ -29,11 +29,24 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2-
 
-    - name: Start Selenium (Windows Container)
-      if: runner.os == 'Windows'
+    - name: Install Firefox
+      shell: powershell
       run: |
-          docker pull selenium/standalone-firefox:4.16.1-20240130
-          docker run -d -p 4444:4444 --name selenium-firefox selenium/standalone-firefox:4.16.1-20240130
+        $installerPath = "$env:RUNNER_TEMP\FirefoxSetup.exe"
+        Invoke-WebRequest "https://download.mozilla.org/?product=firefox-$env:FIREFOX_VERSION-SSL&os=win64&lang=en-US" -OutFile $installerPath
+        Start-Process -Wait -FilePath $installerPath -ArgumentList "/S"
+        $firefoxPath = (Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\firefox.exe').'(Default)'
+        echo "Firefox installed at: $firefoxPath"
+
+    - name: Setup GeckoDriver
+      shell: powershell
+      run: |
+        $geckoPath = "$env:RUNNER_TOOL_CACHE\geckodriver\$env:GECKODRIVER_VERSION"
+        New-Item -ItemType Directory -Path $geckoPath -Force
+        Invoke-WebRequest "https://github.com/mozilla/geckodriver/releases/download/v$env:GECKODRIVER_VERSION/geckodriver-v$env:GECKODRIVER_VERSION-win64.zip" -OutFile "$geckoPath\geckodriver.zip"
+        Expand-Archive -Path "$geckoPath\geckodriver.zip" -DestinationPath $geckoPath
+        echo "$geckoPath" | Out-File -FilePath $env:GITHUB_PATH -Append
+        & "$geckoPath\geckodriver.exe" --version
         
     - name: Run Selenide tests
       run: mvn test -Dselenide.remote=$env:SELENIUM_URL -Dtest=Tests_TextBox
