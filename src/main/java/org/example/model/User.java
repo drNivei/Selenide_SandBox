@@ -2,8 +2,6 @@ package org.example.model;
 
 import jakarta.persistence.*;
 
-import javax.annotation.Nullable;
-
 @Entity
 @Table(name="users")
 public class User {
