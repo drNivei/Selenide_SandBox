@@ -41,16 +41,15 @@ jobs:
           Expand-Archive -Path geckodriver.zip -DestinationPath "$env:USERPROFILE\WebDriver\bin"
           Add-Content $env:GITHUB_PATH "$env:USERPROFILE\WebDriver\bin"
         
-
-    - name: Run Tests
-      shell: cmd
-      run: |
-          mvn test "-Dselenide.remote=%SELENIUM_URL%" -Dtest=Tests_TextBox
-      
     - name: Create Allure directories
       run: |
         New-Item -ItemType Directory -Force -Path target\allure-results
         New-Item -ItemType Directory -Force -Path target\allure-report
+        
+    - name: Run Tests
+      shell: cmd
+      run: |
+          mvn test "-Dselenide.remote=%SELENIUM_URL%" -Dtest=Tests_TextBox
     
     - name: Generate Allure Report
       if: always()
