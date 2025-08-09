@@ -41,8 +41,11 @@ jobs:
           Expand-Archive -Path geckodriver.zip -DestinationPath "$env:USERPROFILE\WebDriver\bin"
           Add-Content $env:GITHUB_PATH "$env:USERPROFILE\WebDriver\bin"
         
-    - name: Run Selenide tests
-      run: mvn test -Dselenide.remote=$env:SELENIUM_URL -Dtest=Tests_TextBox
+
+    - name: Run Tests
+      shell: cmd
+      run: |
+          mvn test "-Dselenide.remote=%SELENIUM_URL%" -Dtest=Tests_TextBox
       
     - name: Create Allure directories
       run: |
