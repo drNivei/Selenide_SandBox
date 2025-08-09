@@ -1,25 +1,46 @@
 # .github/workflows/autotests.yml
-name: Automated Tests
+name: Selenide Tests
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+    services:
+      selenium:
+        image: selenium/standalone-chrome
+        ports:
+          - 4444:4444
+
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK 24
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up JDK
       uses: actions/setup-java@v3
       with:
-        java-version: '24'
+        java-version: '24'  # Match your pom.xml Java version
         distribution: 'temurin'
-    - name: Cache Maven packages
+        
+    - name: Cache Maven dependencies
       uses: actions/cache@v3
       with:
         path: ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2-
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
-    - name: Run Tests
-      run: mvn test
+        
+    - name: Run Selenide tests
+      run: mvn test -Dselenide.remote=http://localhost:4444/wd/hub
+      
+    - name: Upload test reports
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-reports
+        path: |
+          target/surefire-reports
+          target/selenide-reports
