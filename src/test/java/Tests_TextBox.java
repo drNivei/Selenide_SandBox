@@ -20,7 +20,10 @@ public class Tests_TextBox {
       Configuration.pageLoadStrategy =  "eager";
       SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
                .screenshots(true)
-               .savePageSource(true));
+               .savePageSource(true)
+               .includeSelenideSteps(true));
+       // Firefox-specific settings
+       Configuration.browserCapabilities.setCapability("acceptInsecureCerts", true);
     }
 
     @Test
