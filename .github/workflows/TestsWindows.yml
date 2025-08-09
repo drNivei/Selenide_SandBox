@@ -29,17 +29,24 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2-
 
-    - name: Install Firefox
+    - name: Install Firefox Portable
       shell: powershell
       run: |
-          choco install firefox -y --version 127.0.1  # ESR version for stability
+        $firefoxPath = "$env:RUNNER_TEMP\firefox"
+        New-Item -ItemType Directory -Path $firefoxPath -Force
+        Invoke-WebRequest "https://download.mozilla.org/?product=firefox-115.0.3esr-SSL&os=win64&lang=en-US" -OutFile "$firefoxPath\firefox.zip"
+        Expand-Archive -Path "$firefoxPath\firefox.zip" -DestinationPath $firefoxPath
+        echo "$firefoxPath\firefox" | Out-File -FilePath $env:GITHUB_PATH -Append
 
     - name: Setup GeckoDriver
+      shell: powershell
       run: |
-          $geckoVersion = "0.34.0"
-          Invoke-WebRequest "https://github.com/mozilla/geckodriver/releases/download/v$geckoVersion/geckodriver-v$geckoVersion-win64.zip" -OutFile geckodriver.zip
-          Expand-Archive -Path geckodriver.zip -DestinationPath "$env:USERPROFILE\WebDriver\bin"
-          Add-Content $env:GITHUB_PATH "$env:USERPROFILE\WebDriver\bin"
+        $geckoVersion = "0.34.0"
+        $geckoPath = "$env:RUNNER_TOOL_CACHE\geckodriver\v$geckoVersion"
+        New-Item -ItemType Directory -Path $geckoPath -Force
+        Invoke-WebRequest "https://github.com/mozilla/geckodriver/releases/download/v$geckoVersion/geckodriver-v$geckoVersion-win64.zip" -OutFile "$geckoPath\geckodriver.zip"
+        Expand-Archive -Path "$geckoPath\geckodriver.zip" -DestinationPath $geckoPath
+        echo "$geckoPath" | Out-File -FilePath $env:GITHUB_PATH -Append
         
     - name: Create Allure directories
       run: |
