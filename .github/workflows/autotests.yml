@@ -39,11 +39,6 @@ jobs:
       if: always()
       run: |
         mvn allure:report
-
-    - name: Serve Allure Report
-      if: always()
-      run: |
-        mvn allure:serve
     
     - name: Upload Allure Report
       uses: actions/upload-artifact@v4
