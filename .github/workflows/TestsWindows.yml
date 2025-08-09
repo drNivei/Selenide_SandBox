@@ -19,7 +19,7 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v4
       with:
-        java-version: '21'  # JDK 24 may have compatibility issues
+        java-version: '24'  # JDK 24 may have compatibility issues
         distribution: 'temurin'
         
     - name: Cache Maven dependencies
