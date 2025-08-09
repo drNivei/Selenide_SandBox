@@ -1,4 +1,4 @@
-package java.Pages.Elements.Elements;
+package Pages.Elements.Elements;
 import static com.codeborne.selenide.Selenide.*;
 
 import com.codeborne.selenide.SelenideElement;

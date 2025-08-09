@@ -1,5 +1,5 @@
-package java.Pages.Methods.Bookstore;
-import java.Pages.Elements.Bookstore.E_Profile;
+package Pages.Methods.Bookstore;
+import Pages.Elements.Bookstore.E_Profile;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;

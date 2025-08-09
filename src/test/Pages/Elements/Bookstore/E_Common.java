@@ -1,4 +1,4 @@
-package java.Pages.Elements.Bookstore;
+package Pages.Elements.Bookstore;
 
 import com.codeborne.selenide.SelenideElement;
 

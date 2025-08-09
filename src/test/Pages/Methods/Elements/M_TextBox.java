@@ -1,5 +1,5 @@
-package java.Pages.Methods.Elements;
-import java.Pages.Elements.Elements.E_TextBox;
+package Pages.Methods.Elements;
+import Pages.Elements.Elements.E_TextBox;
 import org.junit.jupiter.api.Assertions;
 
 import static com.codeborne.selenide.Condition.*;

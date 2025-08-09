@@ -1,5 +1,5 @@
-package java.Pages.Methods.Bookstore;
-import java.Pages.Elements.Bookstore.E_Login;
+package Pages.Methods.Bookstore;
+import Pages.Elements.Bookstore.E_Login;
 
 import java.time.Duration;
 

@@ -1,6 +1,4 @@
-package java;
-
-import java.Pages.Methods.Bookstore.*;
+import Pages.Methods.Bookstore.*;
 import com.codeborne.selenide.Configuration;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
