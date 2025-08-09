@@ -32,7 +32,7 @@ public class Test_E2E_BookStore {
 
     @Test
     public void testUserE2E(){
-        String FirstName = "Alex";
+        String FirstName = "Alex1";
         String LastName = "Alekseev";
         String UserName = "Biba";
         String password = "!1asdfAAdd";
