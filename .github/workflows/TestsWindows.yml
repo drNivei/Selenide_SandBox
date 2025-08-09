@@ -31,8 +31,8 @@ jobs:
 
     - name: Start Selenium Server
       run: |
-        docker pull selenium/standalone-firefox:4.19.1
-        docker run -d -p 4444:4444 --name selenium-firefox selenium/standalone-firefox:4.19.1
+        docker pull selenium/standalone-firefox:4.19.1-windowsservercore
+        docker run -d -p 4444:4444 selenium/standalone-firefox:4.19.1-windowsservercore
         
     - name: Run Selenide tests
       run: mvn test -Dselenide.remote=$env:SELENIUM_URL -Dtest=Tests_TextBox
