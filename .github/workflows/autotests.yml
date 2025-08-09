@@ -34,7 +34,12 @@ jobs:
         
     - name: Run Selenide tests
       run: mvn test -Dselenide.remote=http://localhost:4444/wd/hub -Dtest=Tests_TextBox
-
+      
+    - name: Create Allure directories
+      run: |
+        mkdir -p target/allure-results
+        mkdir -p target/allure-report
+    
     - name: Generate Allure Report
       if: always()
       run: |
