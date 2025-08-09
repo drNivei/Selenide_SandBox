@@ -32,21 +32,14 @@ jobs:
     - name: Install Firefox
       shell: powershell
       run: |
-        $installerPath = "$env:RUNNER_TEMP\FirefoxSetup.exe"
-        Invoke-WebRequest "https://download.mozilla.org/?product=firefox-$env:FIREFOX_VERSION-SSL&os=win64&lang=en-US" -OutFile $installerPath
-        Start-Process -Wait -FilePath $installerPath -ArgumentList "/S"
-        $firefoxPath = (Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\firefox.exe').'(Default)'
-        echo "Firefox installed at: $firefoxPath"
+          choco install firefox -y --version 127.0.1  # ESR version for stability
 
     - name: Setup GeckoDriver
-      shell: powershell
       run: |
-        $geckoPath = "$env:RUNNER_TOOL_CACHE\geckodriver\$env:GECKODRIVER_VERSION"
-        New-Item -ItemType Directory -Path $geckoPath -Force
-        Invoke-WebRequest "https://github.com/mozilla/geckodriver/releases/download/v$env:GECKODRIVER_VERSION/geckodriver-v$env:GECKODRIVER_VERSION-win64.zip" -OutFile "$geckoPath\geckodriver.zip"
-        Expand-Archive -Path "$geckoPath\geckodriver.zip" -DestinationPath $geckoPath
-        echo "$geckoPath" | Out-File -FilePath $env:GITHUB_PATH -Append
-        & "$geckoPath\geckodriver.exe" --version
+          $geckoVersion = "0.34.0"
+          Invoke-WebRequest "https://github.com/mozilla/geckodriver/releases/download/v$geckoVersion/geckodriver-v$geckoVersion-win64.zip" -OutFile geckodriver.zip
+          Expand-Archive -Path geckodriver.zip -DestinationPath "$env:USERPROFILE\WebDriver\bin"
+          Add-Content $env:GITHUB_PATH "$env:USERPROFILE\WebDriver\bin"
         
     - name: Run Selenide tests
       run: mvn test -Dselenide.remote=$env:SELENIUM_URL -Dtest=Tests_TextBox
