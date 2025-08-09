@@ -34,3 +34,14 @@ jobs:
         
     - name: Run Selenide tests
       run: mvn test -Dselenide.remote=http://localhost:4444/wd/hub -Dtest=Tests_TextBox
+
+    - name: Generate Allure Report
+      if: always()
+      run: |
+        mvn allure:report
+    
+    - name: Upload Allure Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-report
+        path: target/site/allure-maven-plugin
