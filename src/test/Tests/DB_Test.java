@@ -1,4 +1,4 @@
-import DB.DB_Methods;
+import Tests.DB.DB_Methods;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

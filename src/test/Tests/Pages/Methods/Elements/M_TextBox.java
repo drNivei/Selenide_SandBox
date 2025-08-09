@@ -1,5 +1,5 @@
-package Pages.Methods;
-import Pages.Elements.E_TextBox;
+package Tests.Pages.Methods.Elements;
+import Tests.Pages.Elements.Elements.E_TextBox;
 import org.junit.jupiter.api.Assertions;
 
 import static com.codeborne.selenide.Condition.*;
