@@ -13,23 +13,28 @@ public class M_Registration {
    private final M_Common mCommon = new M_Common();
 
    public void fillFirstName(String firstName){
-       eRegistration.inputFirstName.setValue(firstName);
+       eRegistration.inputFirstName
+               .setValue(firstName);
    }
 
    public void fillLastName(String lastName){
-        eRegistration.inputLastName.setValue(lastName);
+        eRegistration.inputLastName
+                .setValue(lastName);
     }
 
    public void fillUserName(String userName){
-        eRegistration.inputUserName.setValue(userName);
+        eRegistration.inputUserName
+                .setValue(userName);
    }
 
    public void fillPassword(String password){
-        eRegistration.inputPassword.setValue(password);
+        eRegistration.inputPassword
+                .setValue(password);
    }
 
    public void solveManuallyReCaptcha(){
-        $("#g-recaptcha").shouldBe(visible);
+        $("#g-recaptcha")
+                .shouldBe(visible);
         System.out.println("Please solve the CAPTCHA manually within 20 seconds");
         sleep(20000);
    }
@@ -53,7 +58,8 @@ public class M_Registration {
    }
 
    public void clickbtnBackToLogin(){
-       eRegistration.btnBackToLogin.shouldBe(visible)
+       eRegistration.btnBackToLogin
+               .shouldBe(visible)
                 .shouldBe(enabled)
                 .scrollTo()
                 .shouldBe(interactable)

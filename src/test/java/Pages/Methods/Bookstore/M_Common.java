@@ -8,6 +8,7 @@ public class M_Common {
 E_Common eCommon =  new E_Common();
 
     public void waitForLoading(){
-        eCommon.loadingLabel.should(disappear);
+        eCommon.loadingLabel
+                .should(disappear);
     }
 }

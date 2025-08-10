@@ -17,7 +17,8 @@ public class M_Checkbox {
     }
 
     public void clickExpandCollapseButton(E_Checkbox eCheckbox){
-        eCheckbox.btnExpandCollapse.shouldBe(visible)
+        eCheckbox.btnExpandCollapse
+                .shouldBe(visible)
                 .shouldBe(enabled)
                 .scrollTo()
                 .shouldBe(interactable)
@@ -25,7 +26,8 @@ public class M_Checkbox {
     }
 
     public void clickSelectCheckBox(E_Checkbox eCheckbox){
-        eCheckbox.selectCheckBox.shouldBe(visible)
+        eCheckbox.selectCheckBox
+                .shouldBe(visible)
                 .shouldBe(enabled)
                 .scrollTo()
                 .shouldBe(interactable)
@@ -34,7 +36,8 @@ public class M_Checkbox {
 
     public void clickBtnExpandAll(){
         E_Checkbox eCheckbox = new E_Checkbox();
-        eCheckbox.btnExpandAll.shouldBe(visible)
+        eCheckbox.btnExpandAll
+                .shouldBe(visible)
                 .shouldBe(enabled)
                 .scrollTo()
                 .shouldBe(interactable)
@@ -43,7 +46,8 @@ public class M_Checkbox {
 
     public void clickBtnCollapseAll(){
         E_Checkbox eCheckbox = new E_Checkbox();
-        eCheckbox.btnCollapseAll.shouldBe(visible)
+        eCheckbox.btnCollapseAll
+                .shouldBe(visible)
                 .shouldBe(enabled)
                 .scrollTo()
                 .shouldBe(interactable)

@@ -17,7 +17,8 @@ public class M_Login {
     }
 
      public void clickBtnNewUser(){
-        eLogin.btnNewUser.shouldBe(visible)
+        eLogin.btnNewUser
+                .shouldBe(visible)
                 .shouldBe(enabled)
                 .scrollTo()
                 .shouldBe(interactable)
@@ -27,7 +28,8 @@ public class M_Login {
     }
 
     public void clickBtnLogin(){
-        eLogin.btnLogin.shouldBe(visible)
+        eLogin.btnLogin
+                .shouldBe(visible)
                 .shouldBe(enabled)
                 .scrollTo()
                 .shouldBe(interactable)
@@ -36,7 +38,8 @@ public class M_Login {
     }
 
     public void fillUserName(String userName){
-        eLogin.inputUserName.shouldBe(visible, Duration.ofSeconds(30))
+        eLogin.inputUserName
+                .shouldBe(visible, Duration.ofSeconds(30))
                 .shouldBe(enabled)
                 .scrollTo()
                 .shouldBe(interactable)
@@ -44,7 +47,8 @@ public class M_Login {
     }
 
     public void fillPassword(String password){
-        eLogin.inputPassword.shouldBe(visible)
+        eLogin.inputPassword
+                .shouldBe(visible)
                 .shouldBe(enabled)
                 .scrollTo()
                 .shouldBe(interactable)
@@ -52,7 +56,8 @@ public class M_Login {
     }
 
     public void outputInvalidUserNameOrPassword(){
-      eLogin.outputMessage.shouldHave(exactText("Invalid username or password!"));
+      eLogin.outputMessage
+              .shouldHave(exactText("Invalid username or password!"));
     }
 
 
