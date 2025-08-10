@@ -9,7 +9,6 @@ import io.qameta.allure.Story;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 
-import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.webdriver;
 import static com.codeborne.selenide.WebDriverConditions.url;
 
@@ -37,9 +36,13 @@ public class Test_E2E_BookStore {
     @Feature("E2E")
     @Story("E2E - User life Cycle")
     public void testUserE2E(){
+        //First Name value
         String FirstName = "Alex1";
+        //Last Name value
         String LastName = "Alekseev";
+        //User Name value
         String UserName = "Biba";
+        //Password value
         String password = "!1asdfAAdd";
 
         Allure.step("Open Login page");
@@ -83,5 +86,4 @@ public class Test_E2E_BookStore {
         Allure.step("Check error message 'Invalid username or password!'");
             mLogin.outputInvalidUserNameOrPassword();
     }
-
 }
