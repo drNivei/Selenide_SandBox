@@ -6,13 +6,13 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class E_Login {
 
-    public SelenideElement inputUserName = $("#userName");
-    public SelenideElement inputPassword = $("#password");
+    public final SelenideElement inputUserName = $("#userName");
+    public final SelenideElement inputPassword = $("#password");
 
-    public SelenideElement btnLogin = $("#login");
-    public SelenideElement btnNewUser = $("#newUser");
+    public final SelenideElement btnLogin = $("#login");
+    public final SelenideElement btnNewUser = $("#newUser");
 
-    public SelenideElement outputMessage = $("#output");
+    public final SelenideElement outputMessage = $("#output");
 
 
 }

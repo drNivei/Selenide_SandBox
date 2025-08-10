@@ -2,6 +2,10 @@ import Pages.Methods.Bookstore.*;
 import com.codeborne.selenide.Configuration;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 
@@ -29,54 +33,55 @@ public class Test_E2E_BookStore {
     }
 
     @Test
+    @Epic("Bookstore")
+    @Feature("E2E")
+    @Story("E2E - User life Cycle")
     public void testUserE2E(){
         String FirstName = "Alex1";
         String LastName = "Alekseev";
         String UserName = "Biba";
         String password = "!1asdfAAdd";
 
-        //Open Login page
-        mLogin.openLoginPage();
-        //Go to Registration Screen
-        mLogin.clickBtnNewUser();
-        //Fill user information
-        mRegistration.fillFirstName(FirstName);
-        mRegistration.fillLastName(LastName);
-        mRegistration.fillUserName(UserName);
-        mRegistration.fillPassword(password);
-        //IMPORTANT! Need to solve CAPTCHA manually
-        mRegistration.solveManuallyReCaptcha();
-        //Complete registration
-        mRegistration.clickbtnRegistration();
-        mRegistration.acceptSuccessRegistrationAlert();
-        //Back to Login Page
-        mRegistration.clickbtnBackToLogin();
-        //Fill Login Credentials
-        mLogin.fillUserName(UserName);
-        mLogin.fillPassword(password);
-        //Login and waiting for loading label to disappear
-        mLogin.clickBtnLogin();
-        webdriver().shouldHave(url("https://demoqa.com/profile"));
-        //Log out
-        mProfile.clickBtnLogout();
-        //Log in again
-        //Fill Login Credentials
-        mLogin.fillUserName(UserName);
-        mLogin.fillPassword(password);
-        //Login and waiting for loading label to disappear
-        mLogin.clickBtnLogin();
-        //Delete account
-        mProfile.clickBtnDeleteAccount();
-        mProfile.clickBtnOk();
-        mProfile.confirmDelete();
-        //Log in again
-        //Fill Login Credentials
-        mLogin.fillUserName(UserName);
-        mLogin.fillPassword(password);
-        //Login and waiting for loading label to disappear
-        mLogin.clickBtnLogin();
-        //Check error message 'Invalid username or password!'
-        mLogin.outputInvalidUserNameOrPassword();
+        Allure.step("Open Login page");
+            mLogin.openLoginPage();
+        Allure.step("Go to Registration Screen");
+            mLogin.clickBtnNewUser();
+        Allure.step("Fill user information");
+            mRegistration.fillFirstName(FirstName);
+            mRegistration.fillLastName(LastName);
+            mRegistration.fillUserName(UserName);
+            mRegistration.fillPassword(password);
+        Allure.step("IMPORTANT! Need to solve CAPTCHA manually");
+            mRegistration.solveManuallyReCaptcha();
+        Allure.step("Complete registration");
+            mRegistration.clickbtnRegistration();
+            mRegistration.acceptSuccessRegistrationAlert();
+        Allure.step("Back to Login Page");
+            mRegistration.clickbtnBackToLogin();
+        Allure.step("Fill Login Credentials");
+            mLogin.fillUserName(UserName);
+            mLogin.fillPassword(password);
+        Allure.step("Login and waiting for loading label to disappear");//
+            mLogin.clickBtnLogin();
+            webdriver().shouldHave(url("https://demoqa.com/profile"));
+        Allure.step("Log out");
+            mProfile.clickBtnLogout();
+        Allure.step("Log in again. Fill Login Credentials");
+            mLogin.fillUserName(UserName);
+            mLogin.fillPassword(password);
+        Allure.step("Login and waiting for loading label to disappear");
+            mLogin.clickBtnLogin();
+        Allure.step("Delete account");
+            mProfile.clickBtnDeleteAccount();
+            mProfile.clickBtnOk();
+            mProfile.confirmDelete();
+        Allure.step("Log in again. Fill Login Credentials");
+            mLogin.fillUserName(UserName);
+            mLogin.fillPassword(password);
+        Allure.step("Login and waiting for loading label to disappear");
+            mLogin.clickBtnLogin();
+        Allure.step("Check error message 'Invalid username or password!'");
+            mLogin.outputInvalidUserNameOrPassword();
     }
 
 }

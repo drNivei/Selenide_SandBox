@@ -11,6 +11,7 @@ import Pages.Methods.Elements.M_TextBox;
 
 
 public class Tests_TextBox {
+    private final M_TextBox m_textBox = new M_TextBox();
 
    @BeforeAll
     public static void setupSelenide() {
@@ -27,65 +28,66 @@ public class Tests_TextBox {
     }
 
     @Test
+    @Epic("Elements")
+    @Feature("Text Box")
+    @Story("Positive test with output verification")
     public void testTextBox_Fill() {
-
-        M_TextBox m_textBox = new M_TextBox();
-
+        //Name field value
         String name = "My Name";
-
+        //Email field value
         String email = "email@who.com";
+        //Email placeholder text
         String emailPlaceholder = "name@example.com";
-
+        //Current Address field value
         String currentAddress = "Current Address Country, City, Street, house, flat";
-
+        //Permanent Address field value
         String permanentAddress = "Permanent Address Country, City, Street, house, flat";
-
-        m_textBox.openTextBoxPage();
-
-        m_textBox.inputUserName_Exists();
-        m_textBox.inputEmail_Exists();
-        m_textBox.inputCurrentAddress_Exists();
-        m_textBox.inputPermanentAddress_Exists();
-
-        m_textBox.inputEmail_PlaceholderVerification(emailPlaceholder);
-
-        m_textBox.inputUserName_Set(name);
-        m_textBox.inputEmail_Set(email);
-        m_textBox.inputCurrentAddress_Set(currentAddress);
-        m_textBox.inputPermanentAddress_Set(permanentAddress);
-
-        m_textBox.buttonSubmit_Click();
-
-        m_textBox.outputName_Exists();
-        m_textBox.outputEmail_Exists();
-        m_textBox.outputCurrentAddress_Exists();
-        m_textBox.outputPermanentAddress_Exists();
-
-        m_textBox.outputName_Compare(name);
-        m_textBox.outputEmail_Compare(email);
-        m_textBox.outputCurrentAddress_Compare(currentAddress);
-        m_textBox.outputPermanentAddress_Compare(permanentAddress);
-
+        //Test
+        Allure.step("Open Text box page");
+            m_textBox.openTextBoxPage();
+        Allure.step("Check that all field exists");
+            m_textBox.inputUserName_Exists();
+            m_textBox.inputEmail_Exists();
+            m_textBox.inputCurrentAddress_Exists();
+            m_textBox.inputPermanentAddress_Exists();
+        Allure.step("Check email placeholder text");
+         m_textBox.inputEmail_PlaceholderVerification(emailPlaceholder);
+        Allure.step("Fill all field with data");
+            m_textBox.inputUserName_Set(name);
+            m_textBox.inputEmail_Set(email);
+            m_textBox.inputCurrentAddress_Set(currentAddress);
+            m_textBox.inputPermanentAddress_Set(permanentAddress);
+        Allure.step("Click Submit Button");
+         m_textBox.buttonSubmit_Click();
+        Allure.step("Check that output results exist");
+            m_textBox.outputName_Exists();
+            m_textBox.outputEmail_Exists();
+            m_textBox.outputCurrentAddress_Exists();
+            m_textBox.outputPermanentAddress_Exists();
+        Allure.step("Verify output results");
+            m_textBox.outputName_Compare(name);
+            m_textBox.outputEmail_Compare(email);
+            m_textBox.outputCurrentAddress_Compare(currentAddress);
+            m_textBox.outputPermanentAddress_Compare(permanentAddress);
     }
 
     @Test
-    @Epic("User Management") // This test belongs to the "User Management" epic
-    @Feature("Login Functionality")
-    @Story("Successful Login with Valid Credentials")
+    @Epic("Elements")
+    @Feature("Text Box")
+    @Story("Verify that Email field is higlighted RED when format is not correct.")
     public void testTextBox_EmailInputError(){
-
-        M_TextBox m_textBox = new M_TextBox();
-
+        //Email field value - incorrect format
         String email = "123";
-        Allure.step("Open ");
-        m_textBox.openTextBoxPage();
+        //Test
+        Allure.step("Open Text box page");
+            m_textBox.openTextBoxPage();
         Allure.step("Verify that field 'Email' exists");
-        m_textBox.inputEmail_Exists();
+            m_textBox.inputEmail_Exists();
         Allure.step("Set value '" + email + "' to 'Email' field");
-        m_textBox.inputEmail_Set(email);
+            m_textBox.inputEmail_Set(email);
         Allure.step("Click SUBMIT button");
-        m_textBox.buttonSubmit_Click();
+            m_textBox.buttonSubmit_Click();
         Allure.step("Verify that field 'Email' border is highlighted RED");
-        m_textBox.inputEmail_InputErrorHighlightCheck();
+            m_textBox.inputEmail_InputErrorHighlightCheck();
     }
 }
