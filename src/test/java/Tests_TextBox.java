@@ -45,11 +45,6 @@ public class Tests_TextBox {
         //Test
         Allure.step("Open Text box page");
             m_textBox.openTextBoxPage();
-        Allure.step("Check that all field exists");
-            m_textBox.inputUserName_Exists();
-            m_textBox.inputEmail_Exists();
-            m_textBox.inputCurrentAddress_Exists();
-            m_textBox.inputPermanentAddress_Exists();
         Allure.step("Check email placeholder text");
          m_textBox.inputEmail_PlaceholderVerification(emailPlaceholder);
         Allure.step("Fill all field with data");
@@ -59,11 +54,6 @@ public class Tests_TextBox {
             m_textBox.inputPermanentAddress_Set(permanentAddress);
         Allure.step("Click Submit Button");
          m_textBox.buttonSubmit_Click();
-        Allure.step("Check that output results exist");
-            m_textBox.outputName_Exists();
-            m_textBox.outputEmail_Exists();
-            m_textBox.outputCurrentAddress_Exists();
-            m_textBox.outputPermanentAddress_Exists();
         Allure.step("Verify output results");
             m_textBox.outputName_Compare(name);
             m_textBox.outputEmail_Compare(email);
@@ -81,8 +71,6 @@ public class Tests_TextBox {
         //Test
         Allure.step("Open Text box page");
             m_textBox.openTextBoxPage();
-        Allure.step("Verify that field 'Email' exists");
-            m_textBox.inputEmail_Exists();
         Allure.step("Set value '" + email + "' to 'Email' field");
             m_textBox.inputEmail_Set(email);
         Allure.step("Click SUBMIT button");

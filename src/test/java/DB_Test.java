@@ -87,5 +87,4 @@ public class DB_Test {
         String column5Type = "date";
         Assertions.assertTrue(dbMethods.checkColumnType(schema,tableName,column5Name,column5Type,connection));
     }
-
 }

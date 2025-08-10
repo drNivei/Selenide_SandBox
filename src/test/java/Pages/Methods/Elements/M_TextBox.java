@@ -1,100 +1,161 @@
 package Pages.Methods.Elements;
 import Pages.Elements.Elements.E_TextBox;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.support.Color;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 import java.time.Duration;
 
-public class M_TextBox extends E_TextBox {
+public class M_TextBox {
+
+    private final E_TextBox eTextBox = new E_TextBox();
     //Service
     public void openTextBoxPage() {
         open("/text-box");
     }
 
     //inputUserName
-
     public void inputUserName_Exists() {
-        inputUserName.should(exist).shouldBe(visible);
+        eTextBox.inputUserName
+                .should(exist)
+                .shouldBe(visible);
     }
 
     public void inputUserName_Set(String name) {
-        inputUserName.setValue(name);
+        eTextBox.inputUserName
+                .shouldBe(visible)
+                .shouldBe(enabled)
+                .scrollTo()
+                .shouldBe(interactable)
+                .setValue(name);
     }
 
     //inputEmail
     public void inputEmail_Exists() {
-        inputEmail.should(exist).shouldBe(visible);
+        eTextBox.inputEmail
+                .should(exist)
+                .shouldBe(visible);
     }
 
     public void inputEmail_Set(String email) {
-        inputEmail.setValue(email);
+        eTextBox.inputEmail
+                .shouldBe(visible)
+                .shouldBe(enabled)
+                .scrollTo()
+                .shouldBe(interactable)
+                .setValue(email);
     }
 
     public void inputEmail_InputErrorHighlightCheck(){
-        Assertions.assertTrue(inputEmail.getAttribute("class").contains("field-error"));
+        eTextBox.inputEmail
+                .shouldBe(visible)
+                .shouldHave(cssValue("border-top-color", "rgb(255, 0, 0)"));
+        // Convert to Hex (if needed)
+        //Color color = Color.fromString(borderColorRgba);
+        //String hexColor = color.asHex(); // Format: #rrggbb
+
+        //Check class changes
+        Assertions.assertTrue(eTextBox.inputEmail
+                .getAttribute("class")
+                .contains("field-error"));
        }
 
     //inputCurrentAddress
     public void inputCurrentAddress_Exists() {
-        inputCurrentAddress.should(exist).shouldBe(visible);
+        eTextBox.inputCurrentAddress
+                .should(exist)
+                .shouldBe(visible);
     }
 
     public void inputCurrentAddress_Set(String email) {
-        inputCurrentAddress.setValue(email);
+        eTextBox.inputCurrentAddress
+                .shouldBe(visible)
+                .shouldBe(enabled)
+                .scrollTo()
+                .shouldBe(interactable)
+                .setValue(email);
     }
 
     //inputPermanentAddress
     public void inputPermanentAddress_Exists() {
-        inputPermanentAddress.should(exist).shouldBe(visible);
+        eTextBox.inputPermanentAddress
+                .should(exist)
+                .shouldBe(visible);
     }
 
     public void inputPermanentAddress_Set(String email) {
-        inputPermanentAddress.setValue(email);
+        eTextBox.inputPermanentAddress
+                .shouldBe(visible)
+                .shouldBe(enabled)
+                .scrollTo()
+                .shouldBe(interactable)
+                .setValue(email);
     }
 
     //buttonSubmit
     public void buttonSubmit_Click() {
-        buttonSubmit.pressEnter();
+        eTextBox.buttonSubmit
+                .pressEnter();
     }
 
     //outputName
     public void outputName_Exists() {
-        outputName.should(exist).shouldBe(visible);
+        eTextBox.outputName
+                .should(exist)
+                .shouldBe(visible);
     }
 
     public void outputName_Compare(String str) {
-        outputName.shouldHave(exactText("Name:" + str), Duration.ofSeconds(4));;
+        eTextBox.outputName
+                .shouldBe(visible)
+                .scrollTo()
+                .shouldHave(exactText("Name:" + str), Duration.ofSeconds(4));;
     }
     //outputEmail
     public void outputEmail_Exists() {
-        outputEmail.should(exist).shouldBe(visible);
+        eTextBox.outputEmail
+                .should(exist)
+                .shouldBe(visible);
     }
 
     public void outputEmail_Compare(String str) {
-        outputEmail.shouldHave(exactText("Email:" + str), Duration.ofSeconds(4));;
+        eTextBox.outputEmail
+                .shouldBe(visible)
+                .scrollTo()
+                .shouldHave(exactText("Email:" + str), Duration.ofSeconds(4));;
     }
 
     public void inputEmail_PlaceholderVerification(String str) {
-        inputEmail.shouldHave(attribute("placeholder", str));
+        eTextBox.inputEmail
+                .shouldHave(attribute("placeholder", str));
     }
 
     //outputCurrentAddress
     public void outputCurrentAddress_Exists() {
-        outputCurrentAddress.should(exist).shouldBe(visible);
+        eTextBox.outputCurrentAddress
+                .should(exist).shouldBe(visible);
     }
 
     public void outputCurrentAddress_Compare(String str) {
-        outputCurrentAddress.shouldHave(exactText("Current Address :" + str), Duration.ofSeconds(4));;
+        eTextBox.outputCurrentAddress
+                .shouldBe(visible)
+                .scrollTo()
+                .shouldHave(exactText("Current Address :" + str), Duration.ofSeconds(4));;
     }
     //outputPermanentAddress
     public void outputPermanentAddress_Exists() {
-        outputPermanentAddress.should(exist).shouldBe(visible);
+        eTextBox.outputPermanentAddress
+                .should(exist)
+                .shouldBe(visible);
     }
 
     public void outputPermanentAddress_Compare(String str) {
-        outputPermanentAddress.shouldHave(exactText("Permananet Address :" + str), Duration.ofSeconds(4));;
+        eTextBox.outputPermanentAddress
+                .shouldBe(visible)
+                .scrollTo()
+                .shouldHave(exactText("Permananet Address :" + str), Duration.ofSeconds(4));;
     }
 
 }
