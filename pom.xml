@@ -9,7 +9,6 @@
     <version>1.0-SNAPSHOT</version>
     <dependencies>
         <!-- JUnit 5 -->
-
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -60,6 +59,7 @@
             <artifactId>hibernate-core</artifactId>
             <version>7.0.8.Final</version>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -76,6 +76,14 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
             <version>3.1.2</version>
+            <configuration>
+                <properties>
+                    <property>
+                        <name>listener</name>
+                        <value>io.testit.listener.TestItListener</value>
+                    </property>
+                </properties>
+            </configuration>
         </plugin>
     </plugins>
     </build>
